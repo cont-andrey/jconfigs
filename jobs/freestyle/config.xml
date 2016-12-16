@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Description changed</description>
+  <description></description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <org.jenkinsci.plugins.buildcontextcapture.BuildContextJobProperty plugin="buildcontext-capture@0.6">
@@ -18,7 +18,7 @@
         <hudson.model.StringParameterDefinition>
           <name>USER</name>
           <description></description>
-          <defaultValue>GETest</defaultValue>
+          <defaultValue>GETest1</defaultValue>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
@@ -47,7 +47,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.BatchFile>
-      <command>echo %{USER}</command>
+      <command>echo %{USER}%</command>
     </hudson.tasks.BatchFile>
   </builders>
   <publishers/>
