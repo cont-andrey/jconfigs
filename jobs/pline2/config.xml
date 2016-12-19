@@ -17,33 +17,11 @@
       <triggers/>
     </org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
   </properties>
-  <definition class="org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition" plugin="workflow-cps@2.23">
-    <scm class="hudson.plugins.git.GitSCM" plugin="git@3.0.1">
-      <configVersion>2</configVersion>
-      <userRemoteConfigs>
-        <hudson.plugins.git.UserRemoteConfig>
-          <url>file:///d:/BAcode/configs</url>
-        </hudson.plugins.git.UserRemoteConfig>
-      </userRemoteConfigs>
-      <branches>
-        <hudson.plugins.git.BranchSpec>
-          <name>*/master</name>
-        </hudson.plugins.git.BranchSpec>
-      </branches>
-      <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
-      <submoduleCfg class="list"/>
-      <extensions>
-        <hudson.plugins.git.extensions.impl.CheckoutOption/>
-        <hudson.plugins.git.extensions.impl.CloneOption>
-          <shallow>true</shallow>
-          <noTags>false</noTags>
-          <reference></reference>
-          <depth>0</depth>
-          <honorRefspec>false</honorRefspec>
-        </hudson.plugins.git.extensions.impl.CloneOption>
-      </extensions>
-    </scm>
-    <scriptPath>Jenkinsfile</scriptPath>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.23">
+    <script>node { // &lt;1&gt;
+    checkout scm // &lt;2&gt;
+}</script>
+    <sandbox>true</sandbox>
   </definition>
   <triggers/>
 </flow-definition>
