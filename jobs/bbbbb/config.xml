@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>add descr</description>
+  <description>add description 3</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <org.jenkinsci.plugins.buildcontextcapture.BuildContextJobProperty plugin="buildcontext-capture@0.6">
