@@ -32,7 +32,16 @@
       </branches>
       <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
       <submoduleCfg class="list"/>
-      <extensions/>
+      <extensions>
+        <hudson.plugins.git.extensions.impl.CheckoutOption/>
+        <hudson.plugins.git.extensions.impl.CloneOption>
+          <shallow>true</shallow>
+          <noTags>false</noTags>
+          <reference></reference>
+          <depth>0</depth>
+          <honorRefspec>false</honorRefspec>
+        </hudson.plugins.git.extensions.impl.CloneOption>
+      </extensions>
     </scm>
     <scriptPath>Jenkinsfile</scriptPath>
   </definition>
