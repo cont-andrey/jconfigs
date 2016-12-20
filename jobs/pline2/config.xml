@@ -65,13 +65,6 @@
           <depth>0</depth>
           <honorRefspec>false</honorRefspec>
         </hudson.plugins.git.extensions.impl.CloneOption>
-        <hudson.plugins.git.extensions.impl.SparseCheckoutPaths>
-          <sparseCheckoutPaths>
-            <hudson.plugins.git.extensions.impl.SparseCheckoutPath>
-              <path>automation/jenkins-scripts</path>
-            </hudson.plugins.git.extensions.impl.SparseCheckoutPath>
-          </sparseCheckoutPaths>
-        </hudson.plugins.git.extensions.impl.SparseCheckoutPaths>
       </extensions>
     </scm>
     <scriptPath>Jenkinsfile</scriptPath>
