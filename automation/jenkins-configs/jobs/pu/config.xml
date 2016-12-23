@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <org.jenkinsci.plugins.buildcontextcapture.BuildContextJobProperty plugin="buildcontext-capture@0.6">
+      <on>false</on>
+    </org.jenkinsci.plugins.buildcontextcapture.BuildContextJobProperty>
+    <hudson.plugins.buildblocker.BuildBlockerProperty plugin="build-blocker-plugin@1.7.3">
+      <useBuildBlocker>false</useBuildBlocker>
+      <blockLevel>GLOBAL</blockLevel>
+      <scanQueueFor>DISABLED</scanQueueFor>
+      <blockingJobs></blockingJobs>
+    </hudson.plugins.buildblocker.BuildBlockerProperty>
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>50</daysToKeep>
+        <numToKeep>-1</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@3.0.1">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/cont-andrey/Geoenrichment2.git</url>
+        <credentialsId>gh-cred</credentialsId>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>cd $WORKSPACE
+if [ -d &quot;automation/jenkins-configs&quot; ]; then
+	git subtree pull -P automation/jenkins-configs $JENKINS_HOME/scm-sync-configuration/checkoutConfiguration master -m &quot;Merge history of jenkins configuration changes&quot;
+else
+	git subtree add -P automation/jenkins-configs $JENKINS_HOME/scm-sync-configuration/checkoutConfiguration master -m &quot;Merge history of jenkins configuration changes&quot;
+fi
+
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.git.GitPublisher plugin="git@3.0.1">
+      <configVersion>2</configVersion>
+      <pushMerge>false</pushMerge>
+      <pushOnlyIfSuccess>true</pushOnlyIfSuccess>
+      <forcePush>false</forcePush>
+      <branchesToPush>
+        <hudson.plugins.git.GitPublisher_-BranchToPush>
+          <targetRepoName>origin</targetRepoName>
+          <branchName>/refs/heads/master</branchName>
+        </hudson.plugins.git.GitPublisher_-BranchToPush>
+      </branchesToPush>
+    </hudson.plugins.git.GitPublisher>
+  </publishers>
+  <buildWrappers/>
+</project>
