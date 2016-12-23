@@ -77,7 +77,7 @@ fi
       <branchesToPush>
         <hudson.plugins.git.GitPublisher_-BranchToPush>
           <targetRepoName>origin</targetRepoName>
-          <branchName>/refs/heads/master</branchName>
+          <branchName>master</branchName>
         </hudson.plugins.git.GitPublisher_-BranchToPush>
       </branchesToPush>
     </hudson.plugins.git.GitPublisher>
